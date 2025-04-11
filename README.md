@@ -48,4 +48,4 @@
 
 ## 📁 Project Structure
 
-shopsphere/ ├── manage.py ├── db.sqlite3 ├── shopsphere/ │ ├── settings.py │ ├── urls.py │ └── wsgi.py ├── shopapp/ │ ├── models.py │ ├── views.py │ ├── urls.py │ ├── templates/ │ │ ├── main.html │ │ ├── product_detail.html │ │ ├── cart.html │ │ ├── payment.html │ │ └── success.html │ └── static/ │ └── css/ │ └── styles.css
+<pre lang="markdown"> ```plaintext shopsphere/ ├── manage.py ├── db.sqlite3 ├── shopsphere/ │ ├── __init__.py │ ├── settings.py │ ├── urls.py │ └── wsgi.py ├── shopapp/ │ ├── __init__.py │ ├── models.py │ ├── views.py │ └── urls.py ├── templates/ │ ├── main.html │ ├── product_detail.html │ ├── cart.html │ ├── payment.html │ └── success.html └── static/ └── css/ └── styles.css ``` </pre>
