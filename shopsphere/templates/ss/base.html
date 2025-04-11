@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+    <style>
+        body {
+             background-color: #fff;
+             color: #000;
+         }
+ 
+         .navbar .nav-link {
+         color: #333;
+         margin: 0 12px;
+         font-size: 1rem;
+         }
+ 
+         .navbar .nav-link:hover {
+         color: #000;
+         border-bottom: 2px solid #000;
+         }
+ 
+         .navbar .dropdown-menu a:hover {
+         background-color: #f0f0f0;
+         }
+ 
+         .dropdown-menu-end {
+             right: 0;
+             left: auto;
+         }
+ 
+         .navbar .dropdown-toggle::after {
+             display: none;
+         }
+ 
+         .navbar .nav-item {
+             margin: 0 10px;
+         }
+     </style>
+</head>
+<body>
+    {% include "ss/navbar.html"%}
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

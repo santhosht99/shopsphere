@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+        input {
+            width: 100%; /* Adds space on right side */
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            box-sizing: border-box; /* Ensures padding doesn't overflow */
+        }
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button {
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #333; /* Slightly lighter black */
+            
+        }
+
+        p {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function togglePassword() {
+            let passwordField = document.getElementById("password");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Login</h2>
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}" style="color: red; text-align: center; margin-bottom: 10px;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% endif %}
+        <form action="/login_page" method='post'>
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Email Address" required>
+
+            <div class="password-container">
+                <input type="password" id="password" name="pass1" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p>Don't have an account? <a href="/register">Register</a></p>
+    </div>
+
+</body>
+</html>

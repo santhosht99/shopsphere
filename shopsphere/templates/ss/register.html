@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .register-container {
+            width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .register-container h2 {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+        }
+        .password-container {
+            position: relative;
+        }
+        .password-container input {
+            width: calc(100% - 20px);
+        }
+        .password-container .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .terms {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .register-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .register-btn:hover {
+            background-color: #333;
+        }
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .social-login img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .login-link {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function togglePassword(id) {
+            let input = document.getElementById(id);
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}" style="color: red; text-align: center; margin-bottom: 10px;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form action="/register" method="post">
+        {% csrf_token %}
+            <div class="input-group">
+                <input type="text" name="fname" placeholder="First Name" required>
+            </div>
+            <div class="input-group">
+                <input type="text" name="lname" placeholder="Last Name" required>
+            </div>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+            <div class="input-group password-container">
+                <input type="password" id="password" name="pass1" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+            </div>
+            <div class="input-group password-container">
+                <input type="password" id="confirm-password" name="pass2" placeholder="Confirm Password" required>
+                <span class="toggle-password" onclick="togglePassword('confirm-password')">👁️</span>
+            </div>
+            <div class="terms">
+                <input type="checkbox" required>
+                <label>I agree to the terms and conditions</label>
+            </div>
+            <button type="submit" class="register-btn">Register</button>
+        </form>
+        <div class="social-login">
+            <span>Continue with:</span>
+            <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google">
+            <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook">
+        </div>
+        <div class="login-link">
+            Already have an account? <a href="/login_page">Log in</a>
+        </div>
+    </div>
+</body>
+</html>
