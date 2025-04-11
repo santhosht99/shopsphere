@@ -48,6 +48,7 @@
 
 ## 📁 Project Structure
 
+```plaintext
 shopsphere/
 ├── manage.py
 ├── db.sqlite3
